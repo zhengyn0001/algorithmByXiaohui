@@ -1,4 +1,4 @@
-// 创建二叉树，使用递归创建
+// 创建二叉树，使用栈创建
 function createBinaryTree(list) {
     var node = null;
     if (!(list && list.length)) {
@@ -67,14 +67,17 @@ function postOrderTraveralWidthStack(node) {
         }
         if (stack.length) {
             treeNode = stack.pop();
-            console.log(treeNode.data);
-            treeNode = treeNode.rightNode;
-            if (treeNode) {
+            var node_1 = treeNode.rightNode;
+            // 如果没有右节点，打印根节点
+            if (!treeNode.isCheckRight) {
+                treeNode.isCheckRight = true;
                 stack.push(treeNode);
+                treeNode = node_1;
             }
-            else if (stack.length) {
-                treeNode = stack.pop();
-                treeNode = treeNode.rightNode;
+            else {
+                // 已经处理过右节点了，打印当前的节点
+                console.log(treeNode.data);
+                treeNode = null;
             }
         }
     }

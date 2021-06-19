@@ -4,6 +4,7 @@ interface TreeNode{
     data:number;
     leftNode?:TreeNode;
     rightNode?:TreeNode;
+    isCheckRight?:boolean;
 }
 
 // 创建二叉树，使用递归创建
@@ -72,6 +73,20 @@ function postOrderTraveralWidthStack(node:TreeNode){
         while(treeNode!==null){
             stack.push(treeNode)
             treeNode = treeNode.leftNode
+        }
+        if(stack.length){
+            treeNode=stack.pop()
+            const node:TreeNode = treeNode.rightNode
+            // 如果没有右节点，打印根节点
+            if(!treeNode.isCheckRight) {
+                treeNode.isCheckRight=true
+                stack.push(treeNode)
+                treeNode = node
+            } else {
+                // 已经处理过右节点了，打印当前的节点
+                console.log(treeNode.data)
+                treeNode=null
+            }
         }
     }
 }
