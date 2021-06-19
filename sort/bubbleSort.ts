@@ -27,6 +27,8 @@ function sort(array:number[]){
 
     }
 }
+
+// 还有一个鸡尾酒排序没有实现
 let arr=[2,3,23,434.4243,898.2,223,22,34,34,90]
 sort(arr)
 console.log('冒泡sort:',arr)
