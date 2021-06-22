@@ -1,5 +1,5 @@
 // 分治法，将大于基准元素的放在右边，小于基准元素的放在左边
-function partition(arr:number[],startIndex:number,endIndex:number){
+function partition(arr:number[],startIndex:number,endIndex:number):number{
     const pivot = arr[startIndex]
     let mark = startIndex
     for(let i = startIndex+1; i < endIndex;i++){
@@ -15,7 +15,7 @@ function partition(arr:number[],startIndex:number,endIndex:number){
     return mark
 }
 // 快速排序，用单边循环法(从大到小排序)
-function quickSort(arr:number[],startIndex:number,endIndex:number){
+function quickSort(arr:number[],startIndex:number,endIndex:number):void{
     // 如果开始的index大于等于endIndex,结束递归
     if(startIndex>=endIndex)return
     // 获取基准元素
@@ -24,6 +24,7 @@ function quickSort(arr:number[],startIndex:number,endIndex:number){
     quickSort(arr,pivotIndex+1,endIndex)
 }
 
-const arrList=[23,2323,11,434,99,0,12,34,89.2,21,46,-1,334]
+let arrList:number[]=[23,2323,11,434,99,0,12,34,89.2,21,46,-1,334]
 quickSort(arrList,0,arrList.length-1)
 console.log('快速排序：',arrList)
+export default quickSort

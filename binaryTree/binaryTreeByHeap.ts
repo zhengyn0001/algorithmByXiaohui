@@ -43,8 +43,6 @@ function downAdjust(list:number[],parentIdex:number,length:number){
         childIndex=childIndex*2+1
     }
     list[parentIndex]=temp
-
-
 }
 
 // 创建最小堆
