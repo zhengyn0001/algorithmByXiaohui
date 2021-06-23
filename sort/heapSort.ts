@@ -17,11 +17,19 @@ function downAdjust(array:number[], index:number,length:number,stb:boolean):void
     let childIndex:number = parentIndex*2+1
     while(childIndex<length){
         // 判断有右节点并且右节点大于左节点
-        if(childIndex+1<length&&array[childIndex+1]>array[childIndex]){
+        let result = array[childIndex+1]>array[childIndex]
+        if(!stb){
+            result=!result
+        }
+        if(childIndex+1<length&&result){
             childIndex++
         }
+        result = temp>=array[childIndex]
+        if(!stb){
+            result=!result
+        }
         // 如果父节点大于子节点，退出循环
-        if(temp>=array[childIndex])break;
+        if(result)break;
         // 如果父节点小于子节点，交换位置
         array[parentIndex] = array[childIndex]
         parentIndex=childIndex
@@ -57,7 +65,7 @@ function heapSort(array: number[],stb:boolean):void {
 }
 
 const arrayList:number[] =[23,34,1,1,20,2,9,0,90]
-heapSort(arrayList)
+heapSort(arrayList,false)
 console.log('heapSort',arrayList)
 
 export default heapSort
