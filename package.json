@@ -1,0 +1,26 @@
+{
+  "name": "algorithmbyxiaohui",
+  "version": "1.0.0",
+  "description": "用ts实现漫画算法：小灰的算法之旅里面的相关代码",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -w",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhengyn0001/algorithmByXiaohui.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhengyn0001/algorithmByXiaohui/issues"
+  },
+  "homepage": "https://github.com/zhengyn0001/algorithmByXiaohui#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "ts-node": "^10.0.0"
+  }
+}

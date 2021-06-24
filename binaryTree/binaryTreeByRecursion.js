@@ -1,13 +1,13 @@
+"use strict";
 // 创建二叉树，使用递归创建
 function createBinaryTreeByRecursion(list) {
-    var node = null;
+    let node = null;
     if (!(list && list.length)) {
-        return null;
+        return node;
     }
-    var data = list.shift();
-    console.log('data', data);
+    const data = list.shift();
     if (data !== null) {
-        node = { data: data };
+        node = { data };
         node.leftNode = createBinaryTreeByRecursion(list);
         node.rightNode = createBinaryTreeByRecursion(list);
     }
@@ -16,9 +16,8 @@ function createBinaryTreeByRecursion(list) {
 // （深度优先）前序遍历，根节点，左节点，右节点
 function preOrderTraveralByRecursion(node) {
     if (!node) {
-        return null;
+        return node;
     }
-    console.log(node.data);
     preOrderTraveralByRecursion(node.leftNode);
     preOrderTraveralByRecursion(node.rightNode);
 }
@@ -40,7 +39,7 @@ function postOrderTraveralByRecursion(node) {
     postOrderTraveralByRecursion(node.rightNode);
     console.log(node.data);
 }
-var treeByRecursion = createBinaryTreeByRecursion([3, 2, 9, null, null, 10, null, null, 8, null, 4]);
+const treeByRecursion = createBinaryTreeByRecursion([3, 2, 9, null, null, 10, null, null, 8, null, 4]);
 console.log('tree:', treeByRecursion);
 preOrderTraveralByRecursion(treeByRecursion);
 console.log('中序遍历:');

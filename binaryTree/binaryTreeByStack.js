@@ -1,12 +1,13 @@
-// 创建二叉树，使用栈创建
+"use strict";
+// 创建二叉树，使用递归创建
 function createBinaryTree(list) {
-    var node = null;
+    let node = null;
     if (!(list && list.length)) {
-        return null;
+        return node;
     }
-    var data = list.shift();
+    const data = list.shift();
     if (data !== null) {
-        node = { data: data };
+        node = { data };
         node.leftNode = createBinaryTree(list);
         node.rightNode = createBinaryTree(list);
     }
@@ -17,12 +18,11 @@ function preOrderTraveralWidthStack(node) {
     if (!node) {
         return null;
     }
-    var stack = [];
-    var treeNode = node;
+    let stack = [];
+    let treeNode = node;
     while (treeNode !== null || stack.length) {
         // 遍历左节点
         while (treeNode !== null) {
-            console.log(treeNode.data);
             stack.push(treeNode);
             treeNode = treeNode.leftNode;
         }
@@ -37,8 +37,8 @@ function inOrderTraveralWidthStack(node) {
     if (!node) {
         return null;
     }
-    var stack = [];
-    var treeNode = node;
+    let stack = [];
+    let treeNode = node;
     while (treeNode !== null || stack.length) {
         // 遍历左节点
         while (treeNode !== null) {
@@ -57,8 +57,8 @@ function postOrderTraveralWidthStack(node) {
     if (!node) {
         return null;
     }
-    var stack = [];
-    var treeNode = node;
+    let stack = [];
+    let treeNode = node;
     while (treeNode !== null || stack.length) {
         // 遍历左节点
         while (treeNode !== null) {
@@ -67,12 +67,12 @@ function postOrderTraveralWidthStack(node) {
         }
         if (stack.length) {
             treeNode = stack.pop();
-            var node_1 = treeNode.rightNode;
+            const node = treeNode.rightNode;
             // 如果没有右节点，打印根节点
             if (!treeNode.isCheckRight) {
                 treeNode.isCheckRight = true;
                 stack.push(treeNode);
-                treeNode = node_1;
+                treeNode = node;
             }
             else {
                 // 已经处理过右节点了，打印当前的节点
@@ -82,11 +82,11 @@ function postOrderTraveralWidthStack(node) {
         }
     }
 }
-var tree = createBinaryTree([3, 2, 9, null, null, 10, null, null, 8, null, 4]);
+const tree = createBinaryTree([3, 2, 9, null, null, 10, null, null, 8, null, 4]);
 console.log('tree:', tree);
 console.log('前序遍历:');
-var preOrderTree = preOrderTraveralWidthStack(tree);
+const preOrderTree = preOrderTraveralWidthStack(tree);
 console.log('中序遍历:');
-var inOrderTree = inOrderTraveralWidthStack(tree);
+const inOrderTree = inOrderTraveralWidthStack(tree);
 console.log('后序遍历:');
-var postOrderTree = postOrderTraveralWidthStack(tree);
+const postOrderTree = postOrderTraveralWidthStack(tree);

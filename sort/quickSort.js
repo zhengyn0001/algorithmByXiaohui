@@ -1,11 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // 分治法，将大于基准元素的放在右边，小于基准元素的放在左边
 function partition(arr, startIndex, endIndex) {
-    var pivot = arr[startIndex];
-    var mark = startIndex;
-    for (var i = startIndex + 1; i < endIndex; i++) {
+    const pivot = arr[startIndex];
+    let mark = startIndex;
+    for (let i = startIndex + 1; i < endIndex; i++) {
         if (arr[i] < pivot) {
             mark++;
-            var temp = arr[i];
+            const temp = arr[i];
             arr[i] = arr[mark];
             arr[mark] = temp;
         }
@@ -20,10 +22,11 @@ function quickSort(arr, startIndex, endIndex) {
     if (startIndex >= endIndex)
         return;
     // 获取基准元素
-    var pivotIndex = partition(arr, startIndex, endIndex);
+    const pivotIndex = partition(arr, startIndex, endIndex);
     quickSort(arr, startIndex, pivotIndex - 1);
     quickSort(arr, pivotIndex + 1, endIndex);
 }
-var arrList = [23, 2323, 11, 434, 99, 0, 12, 34, 89.2, 21, 46, -1, 334];
+let arrList = [23, 2323, 11, 434, 99, 0, 12, 34, 89.2, 21, 46, -1, 334];
 quickSort(arrList, 0, arrList.length - 1);
 console.log('快速排序：', arrList);
+exports.default = quickSort;

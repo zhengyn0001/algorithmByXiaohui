@@ -1,3 +1,4 @@
+"use strict";
 // 实现最小堆
 // 二叉堆
 /**
@@ -9,11 +10,11 @@ function upAdjust(list) {
     if (!list.length) {
         return;
     }
-    var childIndex = list.length - 1;
+    let childIndex = list.length - 1;
     // 获取父节点的索引
-    var parentIndex = (childIndex - 1) / 2;
+    let parentIndex = (childIndex - 1) / 2;
     // 获取要调整位置的值，只要值小于父节点，就上浮
-    var temp = list[childIndex];
+    let temp = list[childIndex];
     // 接下来只要子节点没有到最高并且子节点小于父节点，就会一直上浮
     while (childIndex > 0 && temp < list[parentIndex]) {
         list[childIndex] = list[parentIndex];
@@ -26,11 +27,11 @@ function upAdjust(list) {
 function downAdjust(list, parentIdex, length) {
     if (!(list && list.length))
         return;
-    var parentIndex = parentIdex;
+    let parentIndex = parentIdex;
     // 获取父节点的值
-    var temp = list[parentIndex];
+    const temp = list[parentIndex];
     // 获取子节点的索引
-    var childIndex = parentIndex * 2 + 1;
+    let childIndex = parentIndex * 2 + 1;
     // 判断是否有子节点
     while (childIndex < length) {
         // 判断有右节点的话，并且右节点小于左节点，那么更新索引
@@ -50,12 +51,12 @@ function downAdjust(list, parentIdex, length) {
 // 创建最小堆
 function buildHeap(list) {
     //  从最后一个非叶子节点开始下沉
-    var length = list.length;
-    var lastUnLeafIndex = (length - 2) / 2;
-    for (var i = lastUnLeafIndex; i >= 0; i--) {
+    const length = list.length;
+    const lastUnLeafIndex = (length - 2) / 2;
+    for (let i = lastUnLeafIndex; i >= 0; i--) {
         downAdjust(list, i, length);
     }
 }
-var list = [10, 678, 89, 1, 2, 0, 23, 67, 4, 3, 2, 100];
+const list = [10, 678, 89, 1, 2, 0, 23, 67, 4, 3, 2, 100];
 buildHeap(list);
 console.log('最小堆', list);
