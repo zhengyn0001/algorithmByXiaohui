@@ -1,19 +1,19 @@
 // 用数组数实现二叉树
 // 实现一个接口拥有data,leftNode,rightNode字段的对象
 interface TreeNode{
-    data:number|undefined|null;
+    data:number;
     leftNode?:TreeNode|null;
     rightNode?:TreeNode|null;
 }
 
 // 创建二叉树，使用递归创建
-function createBinaryTreeByRecursion(list:Array<number|null>):TreeNode|null{
+function createBinaryTreeByRecursion(list:Array<number|null>):TreeNode|null|undefined{
     let  node:TreeNode|null = null
     if(!(list&&list.length)){
         return node
     }
-    const data:number|undefined|null = list.shift()
-    if(data!==null){
+    const data:number|null|undefined = list.shift()
+    if(data!==null&&data!==undefined){
         node={data}
         node.leftNode = createBinaryTreeByRecursion(list)
         node.rightNode = createBinaryTreeByRecursion(list)

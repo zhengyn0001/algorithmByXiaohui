@@ -1,20 +1,20 @@
 // 用数组数实现二叉树
 // 实现一个接口拥有data,leftNode,rightNode字段的对象
 interface TreeNode{
-    data:number|undefined;
-    leftNode?:TreeNode;
-    rightNode?:TreeNode;
+    data:number;
+    leftNode?:TreeNode|null;
+    rightNode?:TreeNode|null;
     isCheckRight?:boolean;
 }
 
 // 创建二叉树，使用递归创建
 function createBinaryTree(list:Array<number|null>):TreeNode|null{
-    let  node:TreeNode|null = null
     if(!(list&&list.length)){
-        return node
+        return null
     }
+    let  node:TreeNode|null = null
     const data:number|null|undefined = list.shift()
-    if(data!==null){
+    if(data!==null&&data!==undefined){
         node={data}
         node.leftNode = createBinaryTree(list)
         node.rightNode = createBinaryTree(list)
@@ -32,11 +32,11 @@ function preOrderTraveralWidthStack(node:TreeNode){
         // 遍历左节点
         while(treeNode!==null){
             stack.push(treeNode)
-            treeNode = treeNode.leftNode
+            treeNode = treeNode&&treeNode.leftNode
         }
         if(stack.length){
             treeNode=stack.pop()
-            treeNode=treeNode.rightNode
+            treeNode=treeNode&&treeNode.rightNode
         }
     }
 }
@@ -45,18 +45,17 @@ function inOrderTraveralWidthStack(node:TreeNode){
     if(!node){
         return null
     }
-    let stack:Array<TreeNode> = []
-    let treeNode:TreeNode = node
+    let stack:Array<TreeNode|null|undefined> = []
+    let treeNode:TreeNode|null|undefined = node
     while(treeNode!==null||stack.length){
         // 遍历左节点
         while(treeNode!==null){
             stack.push(treeNode)
-            treeNode = treeNode.leftNode
+            treeNode = treeNode&&treeNode.leftNode
         }
         if(stack.length){
             treeNode=stack.pop()
-            console.log(treeNode.data)
-            treeNode=treeNode.rightNode
+            treeNode=treeNode&&treeNode.rightNode
         }
     }
 }
@@ -66,19 +65,19 @@ function postOrderTraveralWidthStack(node:TreeNode){
         return null
     }
     let stack:Array<TreeNode> = []
-    let treeNode:TreeNode = node
+    let treeNode:TreeNode|null = node
     while(treeNode!==null||stack.length){
         // 遍历左节点
-        while(treeNode!==null){
+        while(treeNode!==null&&treeNode!==undefined){
             stack.push(treeNode)
-            treeNode = treeNode.leftNode
+            treeNode = treeNode&&treeNode.leftNode
         }
         if(stack.length){
             treeNode=stack.pop()
-            const node:TreeNode = treeNode.rightNode
+            const node:TreeNode|null|undefined = treeNode&&treeNode.rightNode
             // 如果没有右节点，打印根节点
-            if(!treeNode.isCheckRight) {
-                treeNode.isCheckRight=true
+            if(!(treeNode as TreeNode).isCheckRight) {
+                (treeNode as TreeNode).isCheckRight=true
                 stack.push(treeNode)
                 treeNode = node
             } else {
