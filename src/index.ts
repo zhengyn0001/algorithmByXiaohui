@@ -1,0 +1,10 @@
+import recursionBinaryTree from './binaryTree/binaryTreeByRecursion.js';
+console.log(recursionBinaryTree,'recursionBinaryTree')
+const treeByRecursion= recursionBinaryTree.createBinaryTreeByRecursion([3,2,9,null,null,10,null,null,8,null,4])
+console.log('tree:',treeByRecursion)
+console.log('前序遍历:')
+recursionBinaryTree.preOrderTraveralByRecursion(treeByRecursion)
+console.log('中序遍历:')
+recursionBinaryTree.inOrderTraveralByRecursion(treeByRecursion)
+console.log('后序遍历:')
+recursionBinaryTree.postOrderTraveralByRecursion(treeByRecursion)

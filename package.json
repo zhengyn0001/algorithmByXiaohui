@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "用ts实现漫画算法：小灰的算法之旅里面的相关代码",
   "type": "module",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -w",
-    "start": "nodemon index.js"
+    "start": "nodemon lib/index.js"
   },
   "repository": {
     "type": "git",
