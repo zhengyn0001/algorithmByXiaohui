@@ -2,8 +2,8 @@
 // 实现一个接口拥有data,leftNode,rightNode字段的对象
 interface TreeNode{
     data:number;
-    leftNode?:TreeNode|null;
-    rightNode?:TreeNode|null;
+    leftNode:TreeNode|null;
+    rightNode:TreeNode|null;
     isCheckRight?:boolean;
 }
 
@@ -13,7 +13,7 @@ function createBinaryTree(list:Array<number|null>):TreeNode|null{
         return null
     }
     let  node:TreeNode|null = null
-    const data:number|null|undefined = list.shift()
+    const data:number|null = list.shift() 
     if(data!==null&&data!==undefined){
         node={data}
         node.leftNode = createBinaryTree(list)
