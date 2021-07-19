@@ -2,12 +2,11 @@
   "name": "algorithmbyxiaohui",
   "version": "1.0.0",
   "description": "用ts实现漫画算法：小灰的算法之旅里面的相关代码",
-  "type": "module",
-  "main": "lib/index.js",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -w",
-    "start": "nodemon lib/index.js"
+    "start": "nodemon src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -25,7 +24,7 @@
     "eslint": "^7.29.0",
     "eslint-config-alloy": "^4.1.0",
     "nodemon": "^2.0.7",
-    "ts-node": "^10.0.0",
+    "ts-node": "^10.1.0",
     "typescript": "^4.3.4"
   }
 }
